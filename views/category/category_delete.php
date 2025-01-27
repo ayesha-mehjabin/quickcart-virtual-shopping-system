@@ -46,7 +46,7 @@ $categories = $category->getAllCategories();
                                 <input type="hidden" name="id" value="<?php echo $cat['CategoryID']; ?>">
                                 <button type="submit">Edit</button>
                             </form>
-                        </td>
+                        </td>`
                     </tr>
                 <?php endforeach; ?>
             </tbody>

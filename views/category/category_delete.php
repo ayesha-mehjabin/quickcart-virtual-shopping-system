@@ -1,15 +1,15 @@
 <?php
-require_once '../../models/Category.php'; // Path to the Category.php file
+require_once(__DIR__ . "/../../models/Category.php");
+
 $category = new Category();
 $categories = $category->getAllCategories();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delete Category</title>
     <link rel="stylesheet" href="../../assets/css/category_delete_style.css">
 </head>
@@ -17,40 +17,16 @@ $categories = $category->getAllCategories();
 <body>
     <div class="container">
         <h1>Delete Category</h1>
-        <form action="../../controllers/CategoryController.php" method="POST">
-            <input type="hidden" name="action" value="delete">
-            <label for="id">Category ID:</label>
-            <input type="number" id="id" name="id" required>
-            <button type="submit">Delete Category</button>
-        </form>
+        <form action="../../controllers/CategoryController.php" method="post">
 
-        <!-- Table to Show All Categories -->
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Category Name</th>
-                    <th>Description</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($categories as $cat): ?>
-                    <tr>
-                        <td><?php echo $cat['CategoryID']; ?></td>
-                        <td><?php echo $cat['CatName']; ?></td>
-                        <td><?php echo $cat['CatDescription']; ?></td>
-                        <td>
-                            <form action="../../controllers/CategoryController.php" method="POST">
-                                <input type="hidden" name="action" value="update">
-                                <input type="hidden" name="id" value="<?php echo $cat['CategoryID']; ?>">
-                                <button type="submit">Edit</button>
-                            </form>
-                        </td>`
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+            <input type="hidden" name="action" value="delete">
+            <label for="id">Category Id:</label><br>
+            <input type="number" id="id" name="id"><br>
+
+            <div class="btn">
+                <button type="submit">Detele Category</button>
+            </div>
+        </form>
     </div>
 </body>
 

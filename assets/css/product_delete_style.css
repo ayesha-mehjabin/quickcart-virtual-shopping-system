@@ -5,28 +5,24 @@ body{
 }
 
 .container{
-    background-color:white;
+    background-color:#fff;
     max-width: 800px;
     margin: 50px auto;
     padding: 25px;
     border-radius: 10px;
 }
+
 h1{
     text-align: center;
     color: rgb(87, 11, 36);
 }
 
-label{
-    font-weight: bold;
-    margin: 10px 0px 5px;
-}
-
-input[type="number"], input[type="text"], textarea {
+input[type="number"]{
     font-size: 12px;
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid rgb(98, 60, 7);
+    border: 1px solid p;
     border-radius: 5px;
 }
 
@@ -47,21 +43,3 @@ button{
 button:hover{
     background-color: brown;
 }
-    
-table{
-    width: 100%;
-    margin-top: 25px;
-    border-collapse: collapse;
-}
-
-table th, table td{
-    border: 1px solid cadetblue;
-    padding: 12px;
-    text-align: left;
-}
-
-table th{
-    background-color: rgb(116, 54, 75);
-    color: white;
-}
-

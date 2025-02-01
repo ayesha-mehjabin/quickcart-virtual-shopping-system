@@ -1,38 +1,42 @@
 <?php
 require_once(__DIR__ . '/../config/db.php');
 
-class Category{
+class Product
+{
+
     private $conn;
-    
-    public function connectToDatabase(){
+
+    public function connectToDatabase()
+    {
         $database = new Database();
-        
+
         $this->conn = $database->getConnection();
     }
-    
-    public function addCategory($name, $description){
+
+    public function addProduct($name, $description, $quantity, $price, $img, $category)
+    {
         $this->connectToDatabase();
-        
-        $query = 'INSERT INTO categories (CatName, CatDescription) VALUES(?, ?)';
-        
+
+        $query = 'INSERT INTO products (ProName, ProDescription, ProStock, ProPrice, ProImageURL, CategoryID) VALUES(?, ?, ?, ?, ?, ?)';
+
         $stmt = $this->conn->prepare($query);
-         
-        if($stmt){
-            
-            $stmt->bind_param("ss", $name, $description);
-            
+
+        if ($stmt) {
+            $stmt->bind_param("ssidsi", $name, $description, $quantity, $price, $img, $category);
+
             return $stmt->execute();
-        } 
+        }
     }
 
-    public function deleteCategory($id){
+    public function deleteProduct($id)
+    {
         $this->connectToDatabase();
 
-        $query = 'DELETE FROM categories WHERE CategoryID = ?';
+        $query = 'DELETE FROM products WHERE ProductID = ?';
 
         $stmt = $this->conn->prepare($query);
 
-        if($stmt){
+        if ($stmt) {
 
             $stmt->bind_param("i", $id);
 
@@ -40,24 +44,25 @@ class Category{
         }
     }
 
-    public function updateCategory($id, $name, $description){
+    public function updateProduct($id, $name, $description, $quantity, $img, $price, $category)
+    {
         $this->connectToDatabase();
 
-        $query = 'UPDATE categories SET CatName = ?, CatDescription = ? WHERE CategoryID = ?';
-        
+        $query = 'UPDATE products SET ProName = ?, ProDescription = ?, ProStock = ?, ProPrice = ?, ProImageURL = ?, CategoryID = ? WHERE ProductID = ?';
         $stmt = $this->conn->prepare($query);
 
         if($stmt){
-            $stmt->bind_param("ssi", $name, $description, $id);
+            $stmt->bind_param("ssdisii", $name, $description, $quantity, $price, $img, $category, $id);
 
             return $stmt->execute();
         }
+
     }
 
-    public function getAllCategories(){
+    public function getAllProducts(){
         $this->connectToDatabase();
 
-        $query = 'SELECT * FROM categories';
+        $query = 'SELECT * FROM products';
         $stmt = $this->conn->prepare($query);
 
         if($stmt)

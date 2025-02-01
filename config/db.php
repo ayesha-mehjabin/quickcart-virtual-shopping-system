@@ -1,46 +1,24 @@
 <?php
-class Database {
-    private $host = "localhost";
-    private $db_name = "quickcart";
+class Database
+{
+    private $servername = "localhost";
     private $username = "root";
     private $password = "";
+    private $dbname = "quickcart";
     public $conn;
 
-    public function getConnection() {
-        $this->conn = null;
-        try {
-            $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
-            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (PDOException $exception) {
-            echo "Connection error: " . $exception->getMessage();
+    public function getConnection()
+    {
+        $this->conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
+    
+        if($this->conn->connect_error)
+        {
+            die("connection failed: " . $this->conn->connect_error);
+        } else {
+            echo "Connected successfully.";
         }
+
         return $this->conn;
     }
 }
 ?>
-
-
-
-
-
-
-
-
-
-
-<?php
-// class Database {
-//     private $dsn = "mysql:host=localhost;dbname=quickcart";
-//     private $username = "root";
-//     private $password = "";
-
-//     public function getConnection() {
-//         try {
-//             return new PDO($this->dsn, $this->username, $this->password);
-//         } catch (PDOException $exception) {
-//             die("Connection error: " . $exception->getMessage());
-//         }
-//     }
-// }
-?>
-

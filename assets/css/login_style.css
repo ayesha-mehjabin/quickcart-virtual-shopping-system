@@ -1,0 +1,57 @@
+body{
+    background-color: bisque;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+h1 {
+    text-align: center;
+    color: rgb(40, 12, 227);
+    margin-top: 20px;
+}
+form{
+    width: 40%;
+    margin: 30px auto;
+    background-color: oldlace;
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 10px;
+}
+label{
+    display: block;
+    font-weight: bold;
+    color: darkslateblue;
+}
+form input[type="email"],
+form input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+button{
+    background-color: skyblue;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 100%;
+}
+button:hover{
+    background-color: deepskyblue;
+}
+.login-link{
+    margin-top: 15px;
+    text-align: center;
+
+}
+.login-link a {
+    color: #007bff;
+    text-decoration: none;
+}
+.login-link a:hover {
+    text-decoration: underline;
+}

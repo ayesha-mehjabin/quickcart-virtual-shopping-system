@@ -1,27 +1,30 @@
-
+window.onload = function () {
+    alert("Welcome to the userroles page!");
+  };
 
 function checkRolename() {
-    var rolename = document.getElementById("rolename").value;
-    const Regex = /^[a-zA-Z]+$/;
+    var rolename = document.getElementById("rolename").value.trim();
 
-    if (rolename.trim() === "" || !Regex.test(rolename)) {
-        document.getElementById("error").innerHTML = "Enter a valid role name (letters only)";
+
+    if (rolename === "") {
+        alert("Role Name is required!");
         return false;
-    } else {
-        document.getElementById("error").innerHTML = "";
-        return true;
-    }
+    } 
+    if (rolename.length < 3 || rolename.length > 50) {
+        alert("Role Name Must be 3 to 50 Characters.");
+        return false;
+      }
 }
 
-function validation() {
-    return checkRolename(); // This ensures validation properly prevents form submission
-}
 
-// Attach validation function to form submit
-document.addEventListener("DOMContentLoaded", function () {
-    document.querySelector("form").addEventListener("submit", function (event) {
-        if (!validation()) {
-            event.preventDefault(); // Prevent form submission if validation fails
-        }
-    });
-});
+function showInputChange() {
+    var nameField = document.getElementById("rolename").value;
+    document.getElementById("changeMessage").innerHTML =
+      "Role Name Changed: " + nameField;
+  }
+
+
+  
+  function changeBgColor() {
+    document.body.style.backgroundColor = "black";
+  }

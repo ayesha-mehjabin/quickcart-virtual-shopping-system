@@ -29,10 +29,10 @@
             <li class="dropdown">
                 <a href="javascript: void(0)">Users</a>
                 <div class="dropdown-content">
-                    <a href="">Add User</a>
-                    <a href="">Delete User</a>
-                    <a href="">Update User</a>
-                    <a href="">View Users</a>
+                    <a href=".\views\users\users_add.php">Add User</a>
+                    <a href=".\views\users\users_delete.php">Delete User</a>
+                    <a href=".\views\users\users_update.php">Update User</a>
+                    <a href=".\views\users\users_view.php">View Users</a>
                 </div>
             </li>
 
@@ -90,10 +90,10 @@
             <li class="dropdown">
                 <a href=" javascript: void(0)">Profile Verification</a>
                 <div class="dropdown-content">
-                    <a href="">New Verification</a>
-                    <a href="">Delete Wrong Verification</a>
-                    <a href="">Update Verification Status</a>
-                    <a href="">View Verification Status</a>
+                    <a href=".\views\profileVerification\profileVerification_add.php">New Verification</a>
+                    <a href=".\views\profileVerification\profileVerification_delete.php">Delete Wrong Verification</a>
+                    <a href=".\views\profileVerification\profileVerification_update.php">Update Verification Status</a>
+                    <a href=".\views\profileVerification\profileVerification_view.php">View Verification Status</a>
                 </div>
             </li>
 

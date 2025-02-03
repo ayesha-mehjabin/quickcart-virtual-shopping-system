@@ -11,25 +11,30 @@ $use = $user->getAllUserroles();
 <head>
     <title>Add Users</title>
     <link rel="stylesheet" href="../../assets/css/users_add_style.css">
+    <script src="../../assets/js/users.js"></script>
 </head>
 <body>
     <div class="container">
     <h1>Add new User</h1>
 
-        <form action="../../controllers/UsersController.php" method="post">
+        <form action="../../controllers/UsersController.php" method="post" onsubmit="return validateForm();">
         <input type="hidden" name="action" value="add">
 
         <label for="fname">First Name </label>
-        <input type="text" id="fname" name="fname"><br><br>
+        <input type="text" id="fname" name="fname" onchange="showInputChange()">
+        <p id="changeMessage"></p><br>
 
         <label for="lname">Last Name </label>
-        <input type="text" id="lname" name="lname"><br><br>
+        <input type="text" id="lname" name="lname" onchange="showInputChange2()">
+        <p id="changeMessage"></p><br>
 
         <label for="email">Email </label>
-        <input type="email" id="email" name="email"><br><br>
+        <input type="email" id="email" name="email" onchange="showInputChange3()">
+        <p id="changeMessage"></p><br>
 
         <label for="password">Password </label>
-        <input type="text" id="password" name="password"><br><br>
+        <input type="text" id="password" name="password" onkeydown="characterCount()">
+        <p id="characterCounter"></p><br>
 
         <label for="phone">Phone </label>
         <input type="number" id="phone" name="phone"><br><br>

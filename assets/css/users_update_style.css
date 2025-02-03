@@ -1,0 +1,82 @@
+body{
+    background-color: rgb(197, 149, 165);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin: 0px;
+}
+
+.container{
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 25px;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+form{
+    margin: 0px auto;
+    width: 100%;
+}
+
+h1{
+    text-align: center;
+    color: rgb(87, 11, 36);
+}
+
+label{
+    font-weight: bold;
+    margin: 10px 0px 5px;
+}
+
+input{
+    font-size: 12px;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid p;
+    border-radius: 5px;
+}
+
+.dropdown{
+    font-size: 12px;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid p;
+    border-radius: 5px;
+}
+
+button{
+    padding: 20px;
+    background-color: rgb(87, 11, 36);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.btn{
+
+    text-align: center;
+}
+
+button{
+    background-color: brown;
+}
+    
+table{
+    width: 100%;
+    margin-top: 25px;
+    border-collapse: collapse;
+}
+
+table th, table td{
+    border: 1px solid cadetblue;
+    padding: 12px;
+    text-align: left;
+}
+
+table th{
+    background-color: rgb(116, 54, 75);
+    color: white;
+}

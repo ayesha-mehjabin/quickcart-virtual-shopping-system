@@ -24,10 +24,10 @@ $categories = $category->getAllCategories();
             <input type="number" id="id" name="id" placeholder="Enter Category Id"><br>
 
             <label for="name">New Category Name:</label><br>
-            <input type="text" id="name" name="name" required><br>
+            <input type="text" id="name" name="name"><br>
 
             <label for="description">New Description:</label>
-            <textarea id="description" name="description" rows="4" placeholder="Enter New Description" required></textarea><br>
+            <textarea id="description" name="description" rows="4" placeholder="Enter New Description"></textarea><br>
             <div class="btn">
                 <button type="submit">Update Category</button>
             </div>

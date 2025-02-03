@@ -1,79 +1,42 @@
 <?php
 require_once(__DIR__ . '/../config/db.php');
 
-class ProductOrderForm{
+class ProductOrderForm
+{
     private $conn;
-    
-    public function connectToDatabase(){
+
+    public function connectToDatabase()
+    {
         $database = new Database();
-        
+
         $this->conn = $database->getConnection();
     }
-    
-    public function placeOrder($user_id, $product_id, $quantity, $district, $subdistrict, $area, $postal_code, $payment_method){
+
+    public function placeOrder($user_id, $product_id, $quantity, $district, $subdistrict, $area, $postal_code, $payment_method)
+    {
         $this->connectToDatabase();
-        
-        $query = 'INSERT INTO orders (CatName, CatDescription) VALUES(?, ?)';
-        
+
+        $product_price = "";
+        $query = "SELECT ProPrice FROM Products WHERE ProductID = ?";
         $stmt = $this->conn->prepare($query);
-         
-        if($stmt){
-            
-            $stmt->bind_param("ss", $user_id, $product_id, $quantity, $district, $subdistrict, $area, $postal_code, $payment_method);
-            
-            return $stmt->execute();
-        } 
-    }
+        $stmt->bind_param("i", $product_id);
+        $stmt->execute();
+        $stmt->bind_result($product_price);
+        $stmt->fetch();
+        $stmt->close();
 
-    public function deleteCategory($id){
-        $this->connectToDatabase();
+        $product_price = $product_price * $quantity;
 
-        $query = 'DELETE FROM categories WHERE CategoryID = ?';
+        $query = 'INSERT INTO Orders (PaymentMethod, District, Subdistrict, AREA, PostalCode, TotalAmount, UserID) 
+                                    VALUES (?, ?, ?, ?, ?, ?, ?)';
 
         $stmt = $this->conn->prepare($query);
 
-        if($stmt){
+        if ($stmt) {
 
-            $stmt->bind_param("i", $id);
+            $stmt->bind_param("ssssidi", $payment_method, $district, $subdistrict, $area, $postal_code, $product_price, $user_id);
 
             return $stmt->execute();
         }
-    }
-
-    public function updateCategory($id, $name, $description){
-        $this->connectToDatabase();
-
-        $query = 'UPDATE categories SET CatName = ?, CatDescription = ? WHERE CategoryID = ?';
-        
-        $stmt = $this->conn->prepare($query);
-
-        if($stmt){
-            $stmt->bind_param("ssi", $name, $description, $id);
-
-            return $stmt->execute();
-        }
-    }
-
-    public function getAllCategories(){
-        $this->connectToDatabase();
-
-        $query = 'SELECT * FROM categories';
-        $stmt = $this->conn->prepare($query);
-
-        if($stmt)
-        {
-            $stmt->execute();
-            $result = $stmt->get_result();
-
-            if($result && $result->num_rows > 0)
-            {
-                return $result->fetch_all(MYSQLI_ASSOC);
-            }
-            else{
-                return [];
-            }
-        }
-
     }
 }
-?>

@@ -55,6 +55,15 @@ ul li a:hover{
 .float-right-btn{
   float: right;
 }
+.cls h2{
+  text-align: center;
+}
+
+.cls p{
+  text-align: justify;
+  margin-left: 10px;
+  margin-right: 10px;
+}
 
 .footer{
   background-color: rgb(115, 22, 208);

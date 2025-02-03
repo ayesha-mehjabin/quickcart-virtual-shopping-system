@@ -1,13 +1,13 @@
 <?php
 
 require_once(__DIR__ . "/../models/Product.php");
-//require_once(__DIR__ . "/../models/User.php");
+require_once(__DIR__ . "/../models/Users.php");
 
 $product = new Product();
 $products = $product->getAllProducts();
 
-//$user = new Users();
-//$us = $user->getAllUsers(); 
+$user = new Users();
+$us = $user->getAllUsers(); 
 
 ?>
 <!DOCTYPE html>
@@ -48,7 +48,7 @@ $products = $product->getAllProducts();
             <br>
 
             <label for="quantity">Quantity:</label>
-            <input type="number" id="quantity" name="quantity" min="1">
+            <input type="number" id="quantity" name="quantity">
             <br>
            
     </div>

@@ -1,0 +1,75 @@
+body{
+    background-color: rgb(197, 149, 165);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin: 100px;
+}
+
+.container{
+    max-width: 800px;
+    margin: 100px auto;
+    padding: 25px;
+    border-radius: 10px;
+    background-color: #efeaea;
+    border: 5px solid black;
+}
+
+form{
+    margin: 0px auto;
+    width: 50%;
+    
+}
+
+h1{
+    text-align: center;
+    color: rgb(245, 240, 242);background-color: rgb(87, 11, 36);
+}
+
+label{
+    font-weight: bold;
+    margin: 10px 0px 5px;
+}
+
+input[type="text"], textarea{
+    font-size: 12px;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid p;
+    border-radius: 5px;
+}
+
+button{
+    padding: 5px;
+    width:100px;
+    background-color: rgb(87, 11, 36);
+    color: white;
+    border: black;
+    border-radius: 20px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.btn{
+    text-align: center;
+}
+
+button:hover{
+    background-color: rgb(106, 26, 26);
+}
+    
+table{
+    width: 100%;
+    margin-top: 25px;
+    border-collapse: collapse;
+}
+
+table th, table td{
+    border: 1px solid cadetblue;
+    padding: 12px;
+    text-align: left;
+}
+
+table th{
+    background-color: rgb(116, 54, 75);
+    color: white;
+}

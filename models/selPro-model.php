@@ -1,7 +1,7 @@
 <?php
 require_once(__DIR__ . '/../config/db.php');
 
-class Employee
+class SellerProduct
 {
     private $conn;
 
@@ -11,55 +11,55 @@ class Employee
         $this->conn = $database->getConnection();
     }
 
-    public function addEmployee($emp_id, $designation, $salary, $status, $join_date, $userid)
+    public function addSellerProduct($selpro_id, $selpro_date, $productid, $userid)
     {
         $this->connectToDatabase();
 
-        $query = 'INSERT INTO employees (EmployeeID, Designation, Salary, Status, JoinDate, UserID) 
-                  VALUES (?, ?, ?, ?, ?, ?)';
+        $query = 'INSERT INTO sellerproducts (SelProID, SelProAddedDate, ProductID, UserID) 
+                  VALUES (?, ?, ?, ?)';
 
         $stmt = $this->conn->prepare($query);
 
         if ($stmt) {
-            $stmt->bind_param("issdsi", $emp_id, $designation, $salary, $status, $join_date, $userid);
+            $stmt->bind_param("issi", $selpro_id, $selpro_date, $productid, $userid);
             return $stmt->execute();
         }
         return $stmt->execute();
     }
 
-    public function deleteEmployee($emp_id)
+    public function deleteSellerProduct($SelProID)
     {
         $this->connectToDatabase();
 
-        $query = 'DELETE FROM employees WHERE EmployeeID = ?';
+        $query = 'DELETE FROM sellerproducts WHERE SelProID = ?';
         $stmt = $this->conn->prepare($query);
 
         if ($stmt) {
-            $stmt->bind_param("i", $emp_id);
+            $stmt->bind_param("i", $SelProID);
             return $stmt->execute();
         }
         return $stmt->execute();
     }
 
-    public function updateEmployee($emp_id, $designation, $salary, $status, $join_date, $userid)
+    public function updateSellerProduct($selpro_id, $selpro_date, $productid, $userid)
     {
         $this->connectToDatabase();
 
-        $query = 'UPDATE employees SET Designation = ?, Salary = ?, Status = ?, JoinDate = ?, UserID = ? WHERE EmployeeID = ?';
+        $query = 'UPDATE sellerproducts SET SelProAddedDate = ?, ProductID = ?, UserID = ? WHERE SelProID = ?';
         $stmt = $this->conn->prepare($query);
 
         if ($stmt) {
-            $stmt->bind_param("ssdsi", $designation, $salary, $status, $join_date, $userid, $emp_id);
+            $stmt->bind_param("siii", $selpro_date, $productid, $userid, $selpro_id);
             return $stmt->execute();
         }
         return $stmt->execute();
     }
 
-    public function getAllEmployee()
+    public function getAllSellerProduct()
     {
         $this->connectToDatabase();
 
-        $query = 'SELECT * FROM employees';
+        $query = 'SELECT * FROM sellerproducts';
         $stmt = $this->conn->prepare($query);
 
         if ($stmt) {

@@ -1,7 +1,7 @@
 <?php
 require_once(__DIR__ . '/../config/db.php');
 
-class Employee
+class Review
 {
     private $conn;
 
@@ -11,55 +11,55 @@ class Employee
         $this->conn = $database->getConnection();
     }
 
-    public function addEmployee($emp_id, $designation, $salary, $status, $join_date, $userid)
+    public function addReview($reviewID, $rate, $comment, $reviewDate, $userid, $productId)
     {
         $this->connectToDatabase();
 
-        $query = 'INSERT INTO employees (EmployeeID, Designation, Salary, Status, JoinDate, UserID) 
+        $query = 'INSERT INTO reviews (ReviewID, Rating, Comment, ReviewDate, UserID, ProductID) 
                   VALUES (?, ?, ?, ?, ?, ?)';
 
         $stmt = $this->conn->prepare($query);
 
         if ($stmt) {
-            $stmt->bind_param("issdsi", $emp_id, $designation, $salary, $status, $join_date, $userid);
+            $stmt->bind_param("iissii", $reviewID, $rate, $comment, $reviewDate, $userid, $productId);
             return $stmt->execute();
         }
         return $stmt->execute();
     }
 
-    public function deleteEmployee($emp_id)
+    public function deleteReview($reviewID)
     {
         $this->connectToDatabase();
 
-        $query = 'DELETE FROM employees WHERE EmployeeID = ?';
+        $query = 'DELETE FROM reviews WHERE ReviewID = ?';
         $stmt = $this->conn->prepare($query);
 
         if ($stmt) {
-            $stmt->bind_param("i", $emp_id);
+            $stmt->bind_param("i", $reviewID);
             return $stmt->execute();
         }
         return $stmt->execute();
     }
 
-    public function updateEmployee($emp_id, $designation, $salary, $status, $join_date, $userid)
+    public function updateReview($reviewID, $rate, $comment, $reviewDate, $userid, $productId)
     {
         $this->connectToDatabase();
 
-        $query = 'UPDATE employees SET Designation = ?, Salary = ?, Status = ?, JoinDate = ?, UserID = ? WHERE EmployeeID = ?';
+        $query = 'UPDATE reviews SET Rating = ?, Comment = ?, ReviewDate = ?, UserID = ?, ProductID = ? WHERE ReviewID = ?';
         $stmt = $this->conn->prepare($query);
 
         if ($stmt) {
-            $stmt->bind_param("ssdsi", $designation, $salary, $status, $join_date, $userid, $emp_id);
+            $stmt->bind_param("issiii", $rate, $comment, $reviewDate, $userid, $productId, $reviewID);
             return $stmt->execute();
         }
         return $stmt->execute();
     }
 
-    public function getAllEmployee()
+    public function getAllReview()
     {
         $this->connectToDatabase();
 
-        $query = 'SELECT * FROM employees';
+        $query = 'SELECT * FROM reviews';
         $stmt = $this->conn->prepare($query);
 
         if ($stmt) {

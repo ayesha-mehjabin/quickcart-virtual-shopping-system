@@ -9,6 +9,17 @@
         <label>Payment ID:</label>
         <input type="number" name="PaymentID"><br>
 
+        <label for="OrderID">Order ID:</label><br>
+    <select id="OrderID" name="OrderID" class="dropdown">
+        <option value="" disabled selected>-- Select Order ID --</option>
+    <?php
+        foreach ($OrderID as $Order)
+            {
+                echo "<option value = '" . $Order['OrderID'] . "'>" . $Order['OrderID'] . " - " . $Order['OrderName'] . "</option>";
+             }
+    ?>
+    </select><br>
+
             <button type="submit">Delete Payment</button>
             <button type="reset">Cancel</button>       
     </form>

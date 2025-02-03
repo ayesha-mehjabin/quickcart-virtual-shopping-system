@@ -11,19 +11,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <html>
 <head>
-    <title>QuickCart: Login Page</title>
+    <title> Login </title>
+    <link rel="stylesheet" href="../assets/css/login_style.css">
 </head>
 <body>
-<header>
-    <h1>QuickCart</h1>
-    <input type="text" placeholder="Search in QuickCart">
-    <a href="#">Save More on App</a>
-    <a href="#">Become a Seller</a>
-    <a href="#">Help & Support</a>
-    <a href="#">Login</a>
-    <a href="#">Sign Up</a>
-</header>
-    <h2>Login to QuickCart</h2>
+    <h1>Login to QuickCart</h1>
 
     <?php if (!empty($errors)) { ?>
         <ul style="color: red;">
@@ -35,16 +27,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <p style="color: green;"><?php echo $success; ?></p>
     <?php } ?>
 
-    <form method="POST" action="">
+    <form method="POST" action="../controllers/LoginController.php">
+    <input type="hidden" name="action" value="login">
         <label for="email">Email:</label>
         <input type="email" id="email" name="email"><br><br>
 
         <label for="password">Password:</label>
         <input type="password" id="password" name="password"><br><br>
 
+    <div class="btn">
         <button type="submit">Login</button>
-        <p class="login-link">Haven't Signed Up Yet? <a href="signup.php">Sign Up Now</a>.</p>
-
+    </div>   
+        <p class="login-link">Haven't Signed Up Yet? <a href="signup.php">Sign Up Now</a>.</p>   
     </form>
 </body>
 </html>

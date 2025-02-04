@@ -10,22 +10,22 @@ class profileVerification{
         $this->conn = $database->getConnection();
     }
     
-    public function addProfile($userid, $status, $verificationid, $verificationdate){
+    public function addprofileVerification($userid, $status, $verificationdate){
         $this->connectToDatabase();
         
-        $query = 'INSERT INTO profileverification (UserID, Status, VerificationID, VerificationDate) VALUES(?, ?, ?, ?)';
+        $query = 'INSERT INTO profileverification (UserID, Status, VerificationDate) VALUES(?, ?, ?)';
         
         $stmt = $this->conn->prepare($query);
          
         if($stmt){
             
-            $stmt->bind_param("isis", $userid, $status, $verificationid, $verificationdate);
+            $stmt->bind_param("iss", $userid, $status, $verificationdate);
             
             return $stmt->execute();
         } 
     }
 
-    public function deleteProfile($verificationid){
+    public function deleteprofileVerification($verificationid){
         $this->connectToDatabase();
 
         $query = 'DELETE FROM profileverification WHERE verificationid = ?';
@@ -40,7 +40,7 @@ class profileVerification{
         }
     }
 
-    public function updateProfile($userid, $status, $verificationid, $verificationdate){
+    public function updateprofileVerification($userid, $status, $verificationid, $verificationdate){
         $this->connectToDatabase();
 
         $query = 'UPDATE profileverification SET UserID = ?, Status = ?, VerificationDate = ? WHERE verificationid = ?';

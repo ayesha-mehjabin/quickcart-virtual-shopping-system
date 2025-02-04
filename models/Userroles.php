@@ -25,6 +25,35 @@ class Userroles{
         } 
     }
 
+    public function deleteUserroles($roleid){
+        $this->connectToDatabase();
+
+        $query = 'DELETE FROM userroles WHERE RoleID = ?';
+
+        $stmt = $this->conn->prepare($query);
+
+        if($stmt){
+
+            $stmt->bind_param("i", $roleid);
+
+            return $stmt->execute();
+        }
+    }
+
+    public function updateUsers($roleid, $rolename){
+        $this->connectToDatabase();
+
+        $query = 'UPDATE userroles SET RoleName = ?, WHERE RoleID = ?';
+        
+        $stmt = $this->conn->prepare($query);
+
+        if($stmt){
+            $stmt->bind_param("s", $rolename);
+
+            return $stmt->execute();
+        }
+    }
+
     public function getAllUserroles(){
         $this->connectToDatabase();
 

@@ -32,15 +32,8 @@ $use = $user->getAllUsers();
         </select><br><br>
 
         <label for="status">Status </label>
-        <select id="status" name="status" class="dropdown">
-            <option value="" disabled selected>-- Select Status --</option>
-                <?php
-                foreach ($use as $role)
-                {
-                    echo "<option value = '" . $role['Status'] . "'>" . $role['Status'] . "</option>";
-                }
-                ?>  
-        </select><br><br>
+        <input type="text" id="status" name="status"><br><br>
+  
 
         <label for="verificationdate">Verification Date</label>
         <input type="date" id="verificationdate" name="verificationdate"><br><br>
